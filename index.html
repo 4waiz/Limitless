@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Limitless - AI Fitness Trainer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-infinity"></i>
+                <span>The Limitless</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#recovery">Recovery</a></li>
+                <li><a href="#" class="btn btn-primary">Download App</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container main-content">
+        <section class="hero">
+            <h1>Your AI-Powered Pocket Trainer</h1>
+            <p>Real-time posture correction and smart recovery guidance using advanced computer vision and wearable integration.</p>
+            <a href="#demo" class="btn btn-primary pulse">Try Live Demo</a>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Real-Time Form Analysis</h3>
+                <p>Our AI uses your smartphone camera to analyze your exercise form in real-time, providing instant feedback to prevent injuries and maximize effectiveness.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Wearable Integration</h3>
+                <p>Connects with your smartwatch or fitness tracker to monitor heart rate, fatigue levels, and movement patterns for comprehensive feedback.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>Smart Recovery</h3>
+                <p>Get personalized recovery recommendations based on your workout intensity, muscle fatigue, and biometric data to optimize your rest periods.</p>
+            </div>
+        </section>
+
+        <section id="demo" class="demo-section">
+            <h2>Experience AI-Powered Training</h2>
+            <p>Select an exercise to see our AI in action (simulated demo)</p>
+            
+            <div class="exercise-selector">
+                <select id="exercise-select">
+                    <option value="">Select an exercise...</option>
+                    <option value="squat">Squat</option>
+                    <option value="pushup">Push-up</option>
+                    <option value="lunge">Lunge</option>
+                    <option value="plank">Plank</option>
+                </select>
+            </div>
+            
+            <div class="demo-container">
+                <div class="camera-feed" id="camera-feed">
+                    <div class="skeleton" id="skeleton"></div>
+                    <p id="camera-placeholder">Camera feed will appear here</p>
+                    <!-- Joints will be added dynamically -->
+                </div>
+                
+                <div class="feedback-panel" id="feedback-panel">
+                    <div class="feedback-header">
+                        <div class="feedback-title">Form Feedback</div>
+                        <div class="feedback-status status-good" id="feedback-status">Good Form</div>
+                    </div>
+                    <div class="feedback-message" id="feedback-message">Your form looks great! Keep up the good work.</div>
+                    <div class="feedback-suggestion" id="feedback-suggestion">Try to maintain this posture for optimal results.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recovery" class="recovery-section">
+            <div class="recovery-header">
+                <div class="recovery-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2>Smart Recovery Analysis</h2>
+            </div>
+            
+            <div class="recovery-metrics">
+                <div class="metric-card">
+                    <div class="metric-value" id="heart-rate">72</div>
+                    <div class="metric-label">Heart Rate (bpm)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="fatigue-level">Moderate</div>
+                    <div class="metric-label">Fatigue Level</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="recovery-score">85%</div>
+                    <div class="metric-label">Recovery Score</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="next-workout">24h</div>
+                    <div class="metric-label">Recommended Rest</div>
+                </div>
+            </div>
+            
+            <h3>Personalized Recovery Plan</h3>
+            <div class="recovery-plan">
+                <div class="plan-item">
+                    <div class="plan-icon">
+                        <i class="fa-solid fa-wine-glass"></i>                    
+                    </div>
+                    <div class="plan-details">
+                        <div class="plan-title">Hydration</div>
+                        <div class="plan-desc">Drink at least 2L of water in the next 6 hours</div>
+                    </div>
+                </div>
+                <div class="plan-item">
+                    <div class="plan-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="plan-details">
+                        <div class="plan-title">Sleep</div>
+                        <div class="plan-desc">Aim for 7-8 hours of quality sleep tonight</div>
+                    </div>
+                </div>
+                <div class="plan-item">
+                    <div class="plan-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="plan-details">
+                        <div class="plan-title">Next Workout</div>
+                        <div class="plan-desc">Focus on upper body tomorrow, allow legs to recover</div>
+                    </div>
+                </div>
+                <div class="plan-item">
+                    <div class="plan-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="plan-details">
+                        <div class="plan-title">Nutrition</div>
+                        <div class="plan-desc">Consume 30g protein within 1 hour post-workout</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-logo">The Limitless</div>
+        <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#recovery">Recovery</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+        </ul>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Awaiz. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Exercise selection and demo simulation
+            const exerciseSelect = document.getElementById('exercise-select');
+            const cameraFeed = document.getElementById('camera-feed');
+            const cameraPlaceholder = document.getElementById('camera-placeholder');
+            const skeleton = document.getElementById('skeleton');
+            const feedbackStatus = document.getElementById('feedback-status');
+            const feedbackMessage = document.getElementById('feedback-message');
+            const feedbackSuggestion = document.getElementById('feedback-suggestion');
+            const feedbackPanel = document.getElementById('feedback-panel');
+            
+            // Joint positions for different exercises (simulated)
+            const exerciseData = {
+                squat: {
+                    joints: [
+                        { id: 'head', x: 50, y: 15 },
+                        { id: 'shoulder-left', x: 40, y: 25 },
+                        { id: 'shoulder-right', x: 60, y: 25 },
+                        { id: 'elbow-left', x: 40, y: 40 },
+                        { id: 'elbow-right', x: 60, y: 40 },
+                        { id: 'hip-left', x: 45, y: 50 },
+                        { id: 'hip-right', x: 55, y: 50 },
+                        { id: 'knee-left', x: 45, y: 70 },
+                        { id: 'knee-right', x: 55, y: 70 },
+                        { id: 'ankle-left', x: 45, y: 90 },
+                        { id: 'ankle-right', x: 55, y: 90 }
+                    ],
+                    connections: [
+                        ['head', 'shoulder-left'],
+                        ['head', 'shoulder-right'],
+                        ['shoulder-left', 'elbow-left'],
+                        ['shoulder-right', 'elbow-right'],
+                        ['shoulder-left', 'hip-left'],
+                        ['shoulder-right', 'hip-right'],
+                        ['hip-left', 'knee-left'],
+                        ['hip-right', 'knee-right'],
+                        ['knee-left', 'ankle-left'],
+                        ['knee-right', 'ankle-right'],
+                        ['hip-left', 'hip-right']
+                    ],
+                    goodFeedback: {
+                        status: 'Good Form',
+                        class: 'status-good',
+                        message: 'Excellent squat form! Depth and alignment are perfect.',
+                        suggestion: 'Maintain this form for 3 sets of 10 reps.'
+                    },
+                    badFeedback: {
+                        status: 'Needs Improvement',
+                        class: 'status-warning',
+                        message: 'Knees are caving inward slightly. This can lead to injury over time.',
+                        suggestion: 'Focus on pushing your knees outward during the movement.'
+                    }
+                },
+                pushup: {
+                    joints: [
+                        { id: 'head', x: 50, y: 25 },
+                        { id: 'shoulder-left', x: 40, y: 30 },
+                        { id: 'shoulder-right', x: 60, y: 30 },
+                        { id: 'elbow-left', x: 35, y: 45 },
+                        { id: 'elbow-right', x: 65, y: 45 },
+                        { id: 'wrist-left', x: 30, y: 60 },
+                        { id: 'wrist-right', x: 70, y: 60 },
+                        { id: 'hip-left', x: 45, y: 50 },
+                        { id: 'hip-right', x: 55, y: 50 },
+                        { id: 'knee-left', x: 45, y: 75 },
+                        { id: 'knee-right', x: 55, y: 75 },
+                        { id: 'ankle-left', x: 45, y: 90 },
+                        { id: 'ankle-right', x: 55, y: 90 }
+                    ],
+                    connections: [
+                        ['head', 'shoulder-left'],
+                        ['head', 'shoulder-right'],
+                        ['shoulder-left', 'elbow-left'],
+                        ['shoulder-right', 'elbow-right'],
+                        ['elbow-left', 'wrist-left'],
+                        ['elbow-right', 'wrist-right'],
+                        ['shoulder-left', 'hip-left'],
+                        ['shoulder-right', 'hip-right'],
+                        ['hip-left', 'knee-left'],
+                        ['hip-right', 'knee-right'],
+                        ['knee-left', 'ankle-left'],
+                        ['knee-right', 'ankle-right'],
+                        ['hip-left', 'hip-right']
+                    ],
+                    goodFeedback: {
+                        status: 'Good Form',
+                        class: 'status-good',
+                        message: 'Perfect push-up form! Your body is in a straight line.',
+                        suggestion: 'Maintain this form and focus on controlled movements.'
+                    },
+                    badFeedback: {
+                        status: 'Needs Improvement',
+                        class: 'status-warning',
+                        message: 'Your hips are sagging. This puts strain on your lower back.',
+                        suggestion: 'Engage your core to keep your body straight throughout.'
+                    }
+                },
+                lunge: {
+                    joints: [
+                        { id: 'head', x: 50, y: 15 },
+                        { id: 'shoulder-left', x: 40, y: 25 },
+                        { id: 'shoulder-right', x: 60, y: 25 },
+                        { id: 'elbow-left', x: 40, y: 40 },
+                        { id: 'elbow-right', x: 60, y: 40 },
+                        { id: 'hip-left', x: 45, y: 50 },
+                        { id: 'hip-right', x: 55, y: 50 },
+                        { id: 'knee-left', x: 40, y: 70 },
+                        { id: 'knee-right', x: 65, y: 70 },
+                        { id: 'ankle-left', x: 40, y: 90 },
+                        { id: 'ankle-right', x: 65, y: 90 }
+                    ],
+                    connections: [
+                        ['head', 'shoulder-left'],
+                        ['head', 'shoulder-right'],
+                        ['shoulder-left', 'elbow-left'],
+                        ['shoulder-right', 'elbow-right'],
+                        ['shoulder-left', 'hip-left'],
+                        ['shoulder-right', 'hip-right'],
+                        ['hip-left', 'knee-left'],
+                        ['hip-right', 'knee-right'],
+                        ['knee-left', 'ankle-left'],
+                        ['knee-right', 'ankle-right'],
+                        ['hip-left', 'hip-right']
+                    ],
+                    goodFeedback: {
+                        status: 'Good Form',
+                        class: 'status-good',
+                        message: 'Great lunge form! Your front knee is at 90 degrees.',
+                        suggestion: 'Keep your torso upright as you lower into the lunge.'
+                    },
+                    badFeedback: {
+                        status: 'Needs Improvement',
+                        class: 'status-warning',
+                        message: 'Your front knee is extending past your toes.',
+                        suggestion: 'Take a larger step forward to keep knee behind toes.'
+                    }
+                },
+                plank: {
+                    joints: [
+                        { id: 'head', x: 50, y: 30 },
+                        { id: 'shoulder-left', x: 40, y: 35 },
+                        { id: 'shoulder-right', x: 60, y: 35 },
+                        { id: 'elbow-left', x: 40, y: 45 },
+                        { id: 'elbow-right', x: 60, y: 45 },
+                        { id: 'wrist-left', x: 40, y: 55 },
+                        { id: 'wrist-right', x: 60, y: 55 },
+                        { id: 'hip-left', x: 45, y: 60 },
+                        { id: 'hip-right', x: 55, y: 60 },
+                        { id: 'knee-left', x: 45, y: 75 },
+                        { id: 'knee-right', x: 55, y: 75 },
+                        { id: 'ankle-left', x: 45, y: 90 },
+                        { id: 'ankle-right', x: 55, y: 90 }
+                    ],
+                    connections: [
+                        ['head', 'shoulder-left'],
+                        ['head', 'shoulder-right'],
+                        ['shoulder-left', 'elbow-left'],
+                        ['shoulder-right', 'elbow-right'],
+                        ['elbow-left', 'wrist-left'],
+                        ['elbow-right', 'wrist-right'],
+                        ['shoulder-left', 'hip-left'],
+                        ['shoulder-right', 'hip-right'],
+                        ['hip-left', 'knee-left'],
+                        ['hip-right', 'knee-right'],
+                        ['knee-left', 'ankle-left'],
+                        ['knee-right', 'ankle-right'],
+                        ['hip-left', 'hip-right']
+                    ],
+                    goodFeedback: {
+                        status: 'Good Form',
+                        class: 'status-good',
+                        message: 'Perfect plank position! Your body is in a straight line.',
+                        suggestion: 'Engage your core and hold for 30-60 seconds.'
+                    },
+                    badFeedback: {
+                        status: 'Needs Improvement',
+                        class: 'status-warning',
+                        message: 'Your hips are too high, reducing core engagement.',
+                        suggestion: 'Lower your hips to align shoulders to ankles.'
+                    }
+                }
+            };
+            
+            exerciseSelect.addEventListener('change', function() {
+                const exercise = this.value;
+                
+                if (!exercise) {
+                    // Clear the demo
+                    cameraPlaceholder.style.display = 'block';
+                    skeleton.style.display = 'none';
+                    
+                    // Remove all joints and lines
+                    document.querySelectorAll('.joint, .line').forEach(el => el.remove());
+                    
+                    // Reset feedback
+                    feedbackStatus.textContent = 'Waiting...';
+                    feedbackStatus.className = 'feedback-status';
+                    feedbackMessage.textContent = 'Select an exercise to see real-time feedback.';
+                    feedbackSuggestion.textContent = '';
+                    
+                    return;
+                }
+                
+                cameraPlaceholder.style.display = 'none';
+                skeleton.style.display = 'block';
+                
+                // Remove any existing joints and lines
+                document.querySelectorAll('.joint, .line').forEach(el => el.remove());
+                
+                // Add joints
+                exerciseData[exercise].joints.forEach(joint => {
+                    const jointEl = document.createElement('div');
+                    jointEl.className = 'joint';
+                    jointEl.id = joint.id;
+                    jointEl.style.left = `${joint.x}%`;
+                    jointEl.style.top = `${joint.y}%`;
+                    cameraFeed.appendChild(jointEl);
+                });
+                
+                // Add connections (lines)
+                exerciseData[exercise].connections.forEach(conn => {
+                    const start = exerciseData[exercise].joints.find(j => j.id === conn[0]);
+                    const end = exerciseData[exercise].joints.find(j => j.id === conn[1]);
+                    
+                    if (start && end) {
+                        const line = document.createElement('div');
+                        line.className = 'line';
+                        
+                        // Calculate line length and angle
+                        const dx = end.x - start.x;
+                        const dy = end.y - start.y;
+                        const length = Math.sqrt(dx * dx + dy * dy);
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        
+                        line.style.width = `${length}%`;
+                        line.style.left = `${start.x}%`;
+                        line.style.top = `${start.y}%`;
+                        line.style.transform = `rotate(${angle}deg)`;
+                        
+                        cameraFeed.appendChild(line);
+                    }
+                });
+                
+                // Randomly show good or bad feedback (for demo purposes)
+                const showGoodFeedback = Math.random() > 0.3;
+                const feedback = showGoodFeedback ? 
+                    exerciseData[exercise].goodFeedback : 
+                    exerciseData[exercise].badFeedback;
+                
+                feedbackStatus.textContent = feedback.status;
+                feedbackStatus.className = `feedback-status ${feedback.class}`;
+                feedbackMessage.textContent = feedback.message;
+                feedbackSuggestion.textContent = feedback.suggestion;
+                
+                // Add shake animation if bad feedback
+                if (!showGoodFeedback) {
+                    feedbackPanel.classList.add('shake');
+                    setTimeout(() => {
+                        feedbackPanel.classList.remove('shake');
+                    }, 500);
+                }
+                
+                // Simulate wearable data changes
+                updateWearableData(exercise);
+            });
+            
+            // Function to update wearable data display
+            function updateWearableData(exercise) {
+                const heartRateEl = document.getElementById('heart-rate');
+                const fatigueLevelEl = document.getElementById('fatigue-level');
+                const recoveryScoreEl = document.getElementById('recovery-score');
+                const nextWorkoutEl = document.getElementById('next-workout');
+                
+                // Base values
+                let heartRate = 70;
+                let fatigue = 'Low';
+                let recovery = 90;
+                let rest = '24h';
+                
+                // Adjust based on exercise intensity
+                switch(exercise) {
+                    case 'squat':
+                        heartRate = 85 + Math.floor(Math.random() * 20);
+                        fatigue = 'Moderate';
+                        recovery = 80 - Math.floor(Math.random() * 10);
+                        rest = '24h';
+                        break;
+                    case 'pushup':
+                        heartRate = 90 + Math.floor(Math.random() * 25);
+                        fatigue = 'High';
+                        recovery = 75 - Math.floor(Math.random() * 15);
+                        rest = '36h';
+                        break;
+                    case 'lunge':
+                        heartRate = 80 + Math.floor(Math.random() * 15);
+                        fatigue = 'Moderate';
+                        recovery = 85 - Math.floor(Math.random() * 10);
+                        rest = '24h';
+                        break;
+                    case 'plank':
+                        heartRate = 75 + Math.floor(Math.random() * 10);
+                        fatigue = 'Moderate';
+                        recovery = 85 - Math.floor(Math.random() * 5);
+                        rest = '24h';
+                        break;
+                }
+                
+                // Update fatigue level text
+                const fatigueLevels = ['Low', 'Moderate', 'High'];
+                fatigue = fatigueLevels[Math.floor(Math.random() * fatigueLevels.length)];
+                
+                // Animate the changes
+                animateValue(heartRateEl, parseInt(heartRateEl.textContent), heartRate, 1000);
+                fatigueLevelEl.textContent = fatigue;
+                animateValue(recoveryScoreEl, parseInt(recoveryScoreEl.textContent), recovery, 1000, true);
+                nextWorkoutEl.textContent = rest;
+            }
+            
+            // Helper function to animate numeric values
+            function animateValue(element, start, end, duration, addPercent = false) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    element.textContent = addPercent ? `${value}%` : value;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            // Simulate initial wearable data
+            updateWearableData('squat');
+            
+            // For demo purposes, periodically update wearable data
+            setInterval(() => {
+                if (exerciseSelect.value) {
+                    updateWearableData(exerciseSelect.value);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
