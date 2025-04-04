@@ -60,35 +60,82 @@
 
         <section id="demo" class="demo-section">
             <h2>Experience AI-Powered Training</h2>
-            <p>Select an exercise to see our AI in action (simulated demo)</p>
             
-            <div class="exercise-selector">
-                <select id="exercise-select">
-                    <option value="">Select an exercise...</option>
-                    <option value="squat">Squat</option>
-                    <option value="pushup">Push-up</option>
-                    <option value="lunge">Lunge</option>
-                    <option value="plank">Plank</option>
-                </select>
+            <div class="training-categories">
+                <div class="category-card" data-category="cardio">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Cardio</h3>
+                        <p>Boost endurance and burn calories</p>
+                    </div>
+                    <div class="category-arrow">➤</div>
+                </div>
+                
+                <div class="category-card" data-category="lower-body">
+                    <div class="category-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Lower Body</h3>
+                        <p>Legs, glutes and core stability</p>
+                    </div>
+                    <div class="category-arrow">➤</div>
+                </div>
+                
+                <div class="category-card" data-category="upper-body">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Upper Body</h3>
+                        <p>Chest, shoulders and arms</p>
+                    </div>
+                    <div class="category-arrow">➤</div>
+                </div>
+                
+                <div class="category-card" data-category="mobility">
+                    <div class="category-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Mobility & Recovery</h3>
+                        <p>Stretching, cooldowns, posture</p>
+                    </div>
+                    <div class="category-arrow">➤</div>
+                </div>
+                
+                <div class="ai-suggestion">
+                    <div class="category-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>AI Suggests for Me</h3>
+                        <p>Personalized recommendation based on recent performance</p>
+                    </div>
+                </div>
             </div>
+            
             
             <div class="demo-container">
                 <div class="camera-feed" id="camera-feed">
                     <div class="skeleton" id="skeleton"></div>
                     <p id="camera-placeholder">Camera feed will appear here</p>
-                    <!-- Joints will be added dynamically -->
                 </div>
+            </div>
                 
-                <div class="feedback-panel" id="feedback-panel">
+            <div class="feedback-container">
+                <div class="exercise-feedback">
                     <div class="feedback-header">
-                        <div class="feedback-title">Form Feedback</div>
-                        <div class="feedback-status status-good" id="feedback-status">Good Form</div>
+                        <h3>Form Feedback</h3>
+                        <div class="feedback-status status-good">Good Form</div>
                     </div>
-                    <div class="feedback-message" id="feedback-message">Your form looks great! Keep up the good work.</div>
-                    <div class="feedback-suggestion" id="feedback-suggestion">Try to maintain this posture for optimal results.</div>
+                    <div class="feedback-message">Keep up the great work!</div>
                 </div>
             </div>
         </section>
+        
 
         <section id="recovery" class="recovery-section">
             <div class="recovery-header">
