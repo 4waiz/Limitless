@@ -221,7 +221,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+      }
+      
     // AI Suggestion click handler
     aiSuggestion.addEventListener('click', function() {
         const suggestions = [
