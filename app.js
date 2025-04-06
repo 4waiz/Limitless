@@ -5,18 +5,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initApp() {
+    console.log('Initializing app...');
+    
+    // Detect mobile
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    console.log(`Mobile detected: ${isMobile}`);
+    
     // Check if onboarding is completed
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Local environment detected, resetting onboarding');
         localStorage.removeItem('onboardingCompleted');
     }
+    
     const onboardingCompleted = localStorage.getItem('onboardingCompleted') === 'true';
+    console.log(`Onboarding completed: ${onboardingCompleted}`);
     
     if (!onboardingCompleted) {
-        // Show onboarding screen
+        console.log('Showing onboarding screen');
         showScreen('onboarding');
         initOnboarding();
     } else {
-        // Show home screen
+        console.log('Showing home screen');
         showScreen('home');
     }
     
@@ -153,31 +162,43 @@ function initOnboarding() {
     showStep(currentStep);
     
     // Login form submission
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Show loading
-            document.querySelector('.login-options').classList.add('hidden');
-            document.querySelector('.login-loading').classList.remove('hidden');
-            
-            // Simulate authentication
-            setTimeout(() => {
-                if (username === 'test00' && password === 'test00') {
-                    // Successful login - proceed to next step
-                    document.querySelector('.login-loading').classList.add('hidden');
-                    showStep(1);
-                } else {
-                    // Failed login
-                    document.querySelector('.login-options').classList.remove('hidden');
-                    document.querySelector('.login-loading').classList.add('hidden');
-                    alert('Invalid credentials. Try username: test00, password: test00');
-                }
-            }, 1500);
-        });
-    }
+    // In your initOnboarding function, update the form submission:
+if (loginForm) {
+    const handleSubmit = function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Show loading
+        document.querySelector('.login-options').classList.add('hidden');
+        document.querySelector('.login-loading').classList.remove('hidden');
+        
+        // Use proper mobile-friendly async handling
+        setTimeout(() => {
+            if (username === 'test00' && password === 'test00') {
+                document.querySelector('.login-loading').classList.add('hidden');
+                showStep(1);
+            } else {
+                document.querySelector('.login-options').classList.remove('hidden');
+                document.querySelector('.login-loading').classList.add('hidden');
+                // Mobile-friendly alert alternative
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'mobile-alert';
+                errorMsg.textContent = 'Invalid credentials. Try username: test00, password: test00';
+                document.querySelector('.step[data-step="1"]').appendChild(errorMsg);
+                setTimeout(() => errorMsg.remove(), 3000);
+            }
+        }, 1500);
+    };
+    
+    loginForm.addEventListener('submit', handleSubmit);
+    // Add touch support for mobile form submission
+    loginForm.addEventListener('touchstart', function(e) {
+        if (e.target.tagName === 'BUTTON') {
+            handleSubmit(e);
+        }
+    }, {passive: true});
+}
     
     // Goal selection
     document.querySelectorAll('.goal-card').forEach(card => {
@@ -1193,32 +1214,120 @@ if (buyCreditsButton) {
 }
 
 // PWA Initialization
+// PWA Initialization
 function initPWA() {
-// Register service worker
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('/service-worker.js')
-.then(registration => {
-console.log('ServiceWorker registration successful');
-})
-.catch(err => {
-console.log('ServiceWorker registration failed: ', err);
-});
-});
-}
-// Add to home screen prompt (for mobile)
-let deferredPrompt;
+    // Register service worker with improved mobile support
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            const swUrl = '/service-worker.js';
+            
+            navigator.serviceWorker.register(swUrl)
+                .then(registration => {
+                    console.log('ServiceWorker registration successful with scope:', registration.scope);
+                    
+                    // Check for updates regularly
+                    registration.addEventListener('updatefound', () => {
+                        const installingWorker = registration.installing;
+                        if (installingWorker) {
+                            installingWorker.addEventListener('statechange', () => {
+                                if (installingWorker.state === 'installed') {
+                                    if (navigator.serviceWorker.controller) {
+                                        console.log('New content available; please refresh.');
+                                        // You could show a "Update available" notification to the user here
+                                    } else {
+                                        console.log('Content is cached for offline use.');
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    
+                    // Check for updates every hour
+                    setInterval(() => {
+                        registration.update().then(() => {
+                            console.log('Checked for service worker update');
+                        }).catch(err => {
+                            console.log('Service worker update check failed:', err);
+                        });
+                    }, 60 * 60 * 1000);
+                })
+                .catch(err => {
+                    console.error('ServiceWorker registration failed:', err);
+                });
+        });
+    }
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later
-    deferredPrompt = e;
-    
-    // Show install button (would need to add this to UI)
-    console.log('PWA install available');
-});
+    // Handle app installation prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button (make sure this element exists in your HTML)
+        const installButton = document.getElementById('install-button');
+        if (installButton) {
+            installButton.style.display = 'block';
+            
+            // Use our mobile-friendly event handler
+            addMobileEvent(installButton, 'click', () => {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                
+                // Wait for the user to respond
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                    installButton.style.display = 'none';
+                });
+            });
+        }
+    });
+
+    // Track successful installation
+    window.addEventListener('appinstalled', (evt) => {
+        console.log('App was successfully installed');
+        const installButton = document.getElementById('install-button');
+        if (installButton) {
+            installButton.style.display = 'none';
+        }
+    });
 }
+
+// Mobile-friendly event handler
+function addMobileEvent(element, event, handler) {
+    if (!element) return;
+    
+    element.addEventListener('click', handler);
+    element.addEventListener('touchstart', handler, { passive: true });
+    
+    // For form submissions, also handle touchend to prevent double-tap issues
+    if (event === 'submit') {
+        element.addEventListener('touchend', (e) => {
+            if (e.target.tagName === 'BUTTON' || e.target.type === 'submit') {
+                handler(e);
+            }
+        }, { passive: true });
+    }
+}
+
+// Initialize PWA when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initPWA();
+    
+    // Example usage for login form (make sure loginForm exists)
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        addMobileEvent(loginForm, 'submit', function(e) {
+            e.preventDefault();
+            // Your form handling code here
+            console.log('Form submitted (mobile-friendly)');
+        });
+    }
+});
 
 // Initialize the app
 initApp();

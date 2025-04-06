@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">    
     <meta name="theme-color" content="#6C63FF">
     <title>BeBTR | Train Smarter. Recover Faster.</title>
     <link rel="manifest" href="manifest.json">
@@ -1176,40 +1176,9 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="app.js"></script>
-    <!-- Floating Chat Widget -->
-<div class="chat-widget">
-    <div class="chat-icon">
-        <i class="fas fa-comment-dots"></i>
-        <span class="notification-badge hidden">1</span>
-    </div>
-    <div class="chat-container hidden">
-        <div class="chat-header">
-            <div class="chat-header-info">
-                <h3>BeBTR Coach</h3>
-                <span class="status online">Online</span>
-            </div>
-            <button class="btn-close-chat"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="chat-messages">
-            <div class="message bot">
-                <div class="avatar">
-                    <img src="https://via.placeholder.com/40" alt="AI Coach">
-                </div>
-                <div class="content">
-                    <p>Hi there! I'm your BeBTR AI Coach. How can I help you today?</p>
-                    <span class="timestamp">10:00 AM</span>
-                </div>
-            </div>
-            <!-- More messages will be added here dynamically -->
-        </div>
-        <div class="chat-input">
-            <input type="text" placeholder="Type your message..." id="chat-message-input">
-            <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
+    <!-- Move scripts to end of body and add defer -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="app.js" defer></script>
 </div>
 </body>
 </html>

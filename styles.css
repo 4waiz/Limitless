@@ -2222,7 +2222,43 @@ input[type="range"]::-webkit-slider-thumb {
 .profile-info {
     flex-grow: 1;
 }
-
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .onboarding-container {
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .login-form input {
+        font-size: 16px; /* Prevent iOS zooming */
+        padding: 12px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    
+    .mobile-alert {
+        background: #ffebee;
+        color: #c62828;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    /* Fix for mobile viewport height */
+    .app-container {
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+    
+    .onboarding-steps {
+        min-height: 60vh;
+    }
+}
 .profile-info h2 {
     margin-bottom: 5px;
 }
