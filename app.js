@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initApp() {
     // Check if onboarding is completed
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        localStorage.removeItem('onboardingCompleted');
+    }
     const onboardingCompleted = localStorage.getItem('onboardingCompleted') === 'true';
     
     if (!onboardingCompleted) {
@@ -37,6 +40,57 @@ function initApp() {
     // Initialize chatbot
     initChatbot();
 }
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('ServiceWorker registration successful');
+          
+          // Check for updates
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            console.log('New service worker found:', newWorker);
+          });
+        })
+        .catch((err) => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
+  
+  // Install prompt handling
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later
+    deferredPrompt = e;
+    
+    // Show install button (you'll need to create this in your UI)
+    const installButton = document.getElementById('install-button');
+    if (installButton) {
+      installButton.style.display = 'block';
+      installButton.addEventListener('click', () => {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      });
+    }
+  });
+  
+  // Track successful installation
+  window.addEventListener('appinstalled', (evt) => {
+    console.log('App was successfully installed');
+  });
 // Screen Management
 function showScreen(screenId) {
     // Hide all screens
@@ -89,6 +143,9 @@ function initOnboarding() {
     const progressFill = document.querySelector('.progress-fill');
     const stepIndicators = document.querySelectorAll('.step-indicators span');
     const btnComplete = document.querySelector('.btn-complete');
+    const loginForm = document.getElementById('loginForm');
+    const wearableToggle = document.getElementById('wearable-toggle');
+    const wearableOptions = document.querySelector('.wearable-options');
     
     let currentStep = 0;
     
@@ -96,28 +153,29 @@ function initOnboarding() {
     showStep(currentStep);
     
     // Login form submission
-    const loginForm = document.querySelector('.login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const username = this.querySelector('#username').value;
-            const password = this.querySelector('#password').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            // Simple authentication (in real app, this would be server-side)
-            if (username === 'test00' && password === 'test00') {
-                // Show loading
-                document.querySelector('.login-options').classList.add('hidden');
-                document.querySelector('.login-loading').classList.remove('hidden');
-                
-                // Simulate loading and proceed to next step
-                setTimeout(() => {
+            // Show loading
+            document.querySelector('.login-options').classList.add('hidden');
+            document.querySelector('.login-loading').classList.remove('hidden');
+            
+            // Simulate authentication
+            setTimeout(() => {
+                if (username === 'test00' && password === 'test00') {
+                    // Successful login - proceed to next step
+                    document.querySelector('.login-loading').classList.add('hidden');
                     showStep(1);
+                } else {
+                    // Failed login
                     document.querySelector('.login-options').classList.remove('hidden');
                     document.querySelector('.login-loading').classList.add('hidden');
-                }, 2000);
-            } else {
-                alert('Invalid credentials. Try username: test00, password: test00');
-            }
+                    alert('Invalid credentials. Try username: test00, password: test00');
+                }
+            }, 1500);
         });
     }
     
@@ -131,6 +189,15 @@ function initOnboarding() {
         });
     });
     
+    // Next step buttons
+    document.querySelectorAll('.btn-next-step').forEach(button => {
+        button.addEventListener('click', function() {
+            const currentStepElement = this.closest('.step');
+            const nextStepIndex = parseInt(currentStepElement.dataset.step);
+            showStep(nextStepIndex);
+        });
+    });
+    
     // Day selection
     document.querySelectorAll('.day').forEach(day => {
         day.addEventListener('click', function() {
@@ -139,9 +206,6 @@ function initOnboarding() {
     });
     
     // Wearable toggle
-    const wearableToggle = document.querySelector('.personalization-options input[type="checkbox"]:nth-of-type(2)');
-    const wearableOptions = document.querySelector('.wearable-options');
-    
     if (wearableToggle && wearableOptions) {
         wearableToggle.addEventListener('change', function() {
             if (this.checked) {
@@ -161,6 +225,9 @@ function initOnboarding() {
     }
     
     function showStep(stepIndex) {
+        // Validate step index
+        if (stepIndex < 0 || stepIndex >= steps.length) return;
+        
         // Hide all steps
         steps.forEach(step => {
             step.classList.remove('active');
@@ -168,22 +235,24 @@ function initOnboarding() {
         
         // Show current step
         steps[stepIndex].classList.add('active');
+        currentStep = stepIndex;
         
         // Update progress bar
-        const progress = ((stepIndex + 1) / steps.length) * 100;
+        updateProgress();
+    }
+    
+    function updateProgress() {
+        const progress = ((currentStep + 1) / steps.length) * 100;
         progressFill.style.width = `${progress}%`;
         
         // Update step indicators
         stepIndicators.forEach((indicator, index) => {
-            if (index <= stepIndex) {
+            if (index <= currentStep) {
                 indicator.classList.add('active');
             } else {
                 indicator.classList.remove('active');
             }
         });
-        
-        // Update current step
-        currentStep = stepIndex;
     }
 }
 

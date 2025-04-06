@@ -8,7 +8,21 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="BeBTR">
     <link rel="stylesheet" href="styles.css">
+
+        
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="/manifest.json">
+        
+        <!-- iOS Icons -->
+        <link rel="apple-touch-icon" href="assets/image22.jpg">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="assets/image22.jpg">
+
 </head>
 <body>
     <!-- App Container -->
@@ -27,138 +41,147 @@
                 <li><a href="#community"><i class="fas fa-users"></i></a></li>
             </ul>
             <div class="nav-profile">
-                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                <img src="assets\image5.jpg" alt="Profile" class="profile-pic">
             </div>
+            <button id="install-button" class="btn-install" style="display: none;">
+                <i class="fas fa-download"></i> Install App
+              </button>
         </nav>
 
         <!-- Main Content -->
         <main class="main-content">
             <!-- Onboarding Screen (Initially visible) -->
-            <section id="onboarding" class="screen active">
-                <div class="onboarding-container">
-                    <div class="onboarding-header">
-                        <h1>Welcome to BeBTR</h1>
-                        <p>Train Smarter. Recover Faster. Stay Injury-Free.</p>
-                    </div>
+            <!-- Onboarding Screen (Initially visible) -->
+<section id="onboarding" class="screen active">
+    <div class="onboarding-container">
+        <div class="onboarding-header">
+            <h1>Welcome to BeBTR</h1>
+            <p>Train Smarter. Recover Faster. Stay Injury-Free.</p>
+        </div>
+        
+        <div class="onboarding-steps">
+            <!-- Step 1: Login -->
+            <div class="step active" data-step="1">
+                <h2>Account Login</h2>
+                <div class="login-options">
+                    <form id="loginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
                     
-                    <div class="step active" data-step="1">
-                        <h2>Welcome to BeBTR</h2>
-                        <p>Please login to continue</p>
-                        
-                        <div class="login-options">
-                            <form class="login-form">
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" id="username" placeholder="Enter your username" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" placeholder="Enter your password" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </form>
-                            
-                            <p class="divider">or continue with</p>
-                            
-                            <button class="btn btn-google"><i class="fab fa-google"></i> Continue with Google</button>
-                            <button class="btn btn-apple"><i class="fab fa-apple"></i> Continue with Apple</button>
-                        </div>
-                        
-                        <div class="login-loading hidden">
-                            <div class="loading-spinner"></div>
-                            <p>Authenticating...</p>
-                        </div>
-                    </div>
-                        
-                        <div class="step" data-step="2">
-                            <h2>Set Your Goals</h2>
-                            <div class="goal-selection">
-                                <div class="goal-card" data-goal="strength">
-                                    <i class="fas fa-dumbbell"></i>
-                                    <h3>Build Strength</h3>
-                                </div>
-                                <div class="goal-card" data-goal="endurance">
-                                    <i class="fas fa-heartbeat"></i>
-                                    <h3>Improve Endurance</h3>
-                                </div>
-                                <div class="goal-card" data-goal="flexibility">
-                                    <i class="fas fa-spa"></i>
-                                    <h3>Increase Flexibility</h3>
-                                </div>
-                                <div class="goal-card" data-goal="recovery">
-                                    <i class="fas fa-heart"></i>
-                                    <h3>Enhance Recovery</h3>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="step" data-step="3">
-                            <h2>Your Availability</h2>
-                            <div class="schedule-selector">
-                                <div class="day-selector">
-                                    <div class="day" data-day="mon">Mon</div>
-                                    <div class="day" data-day="tue">Tue</div>
-                                    <div class="day" data-day="wed">Wed</div>
-                                    <div class="day" data-day="thu">Thu</div>
-                                    <div class="day" data-day="fri">Fri</div>
-                                    <div class="day" data-day="sat">Sat</div>
-                                    <div class="day" data-day="sun">Sun</div>
-                                </div>
-                                <div class="time-slider">
-                                    <label for="morning">Morning</label>
-                                    <input type="range" id="morning" min="0" max="100" value="50">
-                                    <label for="afternoon">Afternoon</label>
-                                    <input type="range" id="afternoon" min="0" max="100" value="30">
-                                    <label for="evening">Evening</label>
-                                    <input type="range" id="evening" min="0" max="100" value="20">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="step" data-step="4">
-                            <h2>Personalization</h2>
-                            <div class="personalization-options">
-                                <div class="toggle-option">
-                                    <span>Enable AI Personalization</span>
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                                <div class="toggle-option">
-                                    <span>Connect Wearable Device</span>
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                                <div class="wearable-options hidden">
-                                    <button class="btn btn-wearable"><i class="fab fa-google"></i> Google Fit</button>
-                                    <button class="btn btn-wearable"><i class="fas fa-heartbeat"></i> Apple Health</button>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary btn-complete">Get Started</button>
-                        </div>
-                    </div>
+                    <p class="divider">or continue with</p>
                     
-                    <div class="onboarding-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 25%;"></div>
-                        </div>
-                        <div class="step-indicators">
-                            <span class="active"></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
+                    <button class="btn btn-google"><i class="fab fa-google"></i> Continue with Google</button>
+                    <button class="btn btn-apple"><i class="fab fa-apple"></i> Continue with Apple</button>
+                </div>
+                
+                <div class="login-loading hidden">
+                    <div class="loading-spinner"></div>
+                    <p>Authenticating...</p>
+                </div>
+            </div>
+            
+            <!-- Step 2: Goals -->
+            <div class="step" data-step="2">
+                <h2>Set Your Goals</h2>
+                <div class="goal-selection">
+                    <div class="goal-card" data-goal="strength">
+                        <i class="fas fa-dumbbell"></i>
+                        <h3>Build Strength</h3>
+                    </div>
+                    <div class="goal-card" data-goal="endurance">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Improve Endurance</h3>
+                    </div>
+                    <div class="goal-card" data-goal="flexibility">
+                        <i class="fas fa-spa"></i>
+                        <h3>Increase Flexibility</h3>
+                    </div>
+                    <div class="goal-card" data-goal="recovery">
+                        <i class="fas fa-heart"></i>
+                        <h3>Enhance Recovery</h3>
                     </div>
                 </div>
-            </section>
+                <button class="btn btn-next-step">Continue</button>
+            </div>
+            
+            <!-- Step 3: Availability -->
+            <div class="step" data-step="3">
+                <h2>Your Availability</h2>
+                <div class="schedule-selector">
+                    <div class="day-selector">
+                        <div class="day" data-day="mon">Mon</div>
+                        <div class="day" data-day="tue">Tue</div>
+                        <div class="day" data-day="wed">Wed</div>
+                        <div class="day" data-day="thu">Thu</div>
+                        <div class="day" data-day="fri">Fri</div>
+                        <div class="day" data-day="sat">Sat</div>
+                        <div class="day" data-day="sun">Sun</div>
+                    </div>
+                    <div class="time-slider">
+                        <label for="morning">Morning</label>
+                        <input type="range" id="morning" min="0" max="100" value="50">
+                        <label for="afternoon">Afternoon</label>
+                        <input type="range" id="afternoon" min="0" max="100" value="30">
+                        <label for="evening">Evening</label>
+                        <input type="range" id="evening" min="0" max="100" value="20">
+                    </div>
+                </div>
+                <button class="btn btn-next-step">Continue</button>
+            </div>
+            
+            <!-- Step 4: Personalization -->
+            <div class="step" data-step="4">
+                <h2>Personalization</h2>
+                <div class="personalization-options">
+                    <div class="toggle-option">
+                        <span>Enable AI Personalization</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-option">
+                        <span>Connect Wearable Device</span>
+                        <label class="switch">
+                            <input type="checkbox" id="wearable-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wearable-options hidden">
+                        <button class="btn btn-wearable"><i class="fab fa-google"></i> Google Fit</button>
+                        <button class="btn btn-wearable"><i class="fas fa-heartbeat"></i> Apple Health</button>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-complete">Get Started</button>
+            </div>
+        </div>
+        
+        <div class="onboarding-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 25%;"></div>
+            </div>
+            <div class="step-indicators">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</section>
 
             <!-- Home Dashboard -->
             <section id="home" class="screen">
                 <div class="dashboard-header">
-                    <h1>Welcome Back, <span class="user-name">User</span>!</h1>
+                    <h1>Welcome Back, <span class="user-name">Dr. Asma</span>!</h1>
                     <p id="ai-motivation">"Consistency is key. Let's make today count!"</p>
                 </div>
                 
@@ -619,7 +642,7 @@
                                 <span>7 Day Streak</span>
                             </div>
                             <div class="badge">
-                                <i class="fas fa-perfect"></i>
+                                <i class="fa-solid fa-person"></i>                               
                                 <span>Form Master</span>
                             </div>
                             <div class="badge">
@@ -793,7 +816,7 @@
                 
                 <div class="profile-section">
                     <div class="profile-card">
-                        <img src="https://via.placeholder.com/80" alt="Profile" class="profile-pic">
+                        <img src="assets\image5.jpg" alt="Profile" class="profile-pic">
                         <div class="profile-info">
                             <h2>Your Profile</h2>
                             <p>Level 4 Explorer</p>
@@ -824,18 +847,18 @@
                     
                     <div class="friends-list">
                         <div class="friend-card">
-                            <img src="https://via.placeholder.com/50" alt="Friend" class="friend-pic">
+                            <img src="assets\image2.jpeg" alt="Friend" class="friend-pic">
                             <div class="friend-info">
-                                <h3>Alex Johnson</h3>
+                                <h3>Alaa Khan</h3>
                                 <p>Currently: Mobility Workout</p>
                             </div>
                             <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i> High Five</button>
                         </div>
                         
                         <div class="friend-card">
-                            <img src="https://via.placeholder.com/50" alt="Friend" class="friend-pic">
+                            <img src="assets\image3.jpeg" alt="Friend" class="friend-pic">
                             <div class="friend-info">
-                                <h3>Sam Taylor</h3>
+                                <h3>Yasmine</h3>
                                 <p>7 day streak!</p>
                             </div>
                             <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i> High Five</button>
@@ -845,18 +868,18 @@
                     <div class="friend-activity">
                         <h3>Recent Activity</h3>
                         <div class="activity-item">
-                            <img src="https://via.placeholder.com/40" alt="User" class="activity-pic">
+                            <img src="assets\image9.jpg" alt="User" class="activity-pic">
                             <div class="activity-details">
-                                <p><strong>Alex</strong> completed Upper Body Strength</p>
+                                <p><strong>Fathima</strong> completed Upper Body Strength</p>
                                 <span class="activity-time">2 hours ago</span>
                             </div>
                             <button class="btn btn-comment"><i class="far fa-comment"></i></button>
                         </div>
                         
                         <div class="activity-item">
-                            <img src="https://via.placeholder.com/40" alt="User" class="activity-pic">
+                            <img src="assets\image6.jpg" alt="User" class="activity-pic">
                             <div class="activity-details">
-                                <p><strong>Sam</strong> earned Form Master badge</p>
+                                <p><strong>Sarah</strong> earned Form Master badge</p>
                                 <span class="activity-time">5 hours ago</span>
                             </div>
                             <button class="btn btn-comment"><i class="far fa-comment"></i></button>
@@ -911,7 +934,7 @@
                     <div class="leaderboard-list">
                         <div class="leaderboard-item you">
                             <span class="rank">4</span>
-                            <img src="https://via.placeholder.com/40" alt="User" class="user-pic">
+                            <img src="assets\image5.jpg" alt="User" class="user-pic">
                             <div class="user-info">
                                 <h4>You</h4>
                                 <p>650 XP</p>
@@ -921,9 +944,9 @@
                         
                         <div class="leaderboard-item">
                             <span class="rank">1</span>
-                            <img src="https://via.placeholder.com/40" alt="User" class="user-pic">
+                            <img src="assets\images (1).png" alt="User" class="user-pic">
                             <div class="user-info">
-                                <h4>Alex Johnson</h4>
+                                <h4>Aisha</h4>
                                 <p>1200 XP</p>
                             </div>
                             <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i></button>
@@ -931,9 +954,9 @@
                         
                         <div class="leaderboard-item">
                             <span class="rank">2</span>
-                            <img src="https://via.placeholder.com/40" alt="User" class="user-pic">
+                            <img src="assets\image8.jpg" alt="User" class="user-pic">
                             <div class="user-info">
-                                <h4>Sam Taylor</h4>
+                                <h4>Hanan</h4>
                                 <p>980 XP</p>
                             </div>
                             <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i></button>
