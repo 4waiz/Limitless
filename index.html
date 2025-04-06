@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6C63FF">
+    <title>BeBTR | Train Smarter. Recover Faster.</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <i class="fas fa-dumbbell"></i>
+                <span>BeBTR</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active"><i class="fas fa-home"></i></a></li>
+                <li><a href="#training"><i class="fas fa-running"></i></a></li>
+                <li><a href="#recovery"><i class="fas fa-spa"></i></a></li>
+                <li><a href="#analytics"><i class="fas fa-chart-line"></i></a></li>
+                <li><a href="#community"><i class="fas fa-users"></i></a></li>
+            </ul>
+            <div class="nav-profile">
+                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Onboarding Screen (Initially visible) -->
+            <section id="onboarding" class="screen active">
+                <div class="onboarding-container">
+                    <div class="onboarding-header">
+                        <h1>Welcome to BeBTR</h1>
+                        <p>Train Smarter. Recover Faster. Stay Injury-Free.</p>
+                    </div>
+                    
+                    <div class="step active" data-step="1">
+                        <h2>Welcome to BeBTR</h2>
+                        <p>Please login to continue</p>
+                        
+                        <div class="login-options">
+                            <form class="login-form">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" placeholder="Enter your username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" placeholder="Enter your password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </form>
+                            
+                            <p class="divider">or continue with</p>
+                            
+                            <button class="btn btn-google"><i class="fab fa-google"></i> Continue with Google</button>
+                            <button class="btn btn-apple"><i class="fab fa-apple"></i> Continue with Apple</button>
+                        </div>
+                        
+                        <div class="login-loading hidden">
+                            <div class="loading-spinner"></div>
+                            <p>Authenticating...</p>
+                        </div>
+                    </div>
+                        
+                        <div class="step" data-step="2">
+                            <h2>Set Your Goals</h2>
+                            <div class="goal-selection">
+                                <div class="goal-card" data-goal="strength">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <h3>Build Strength</h3>
+                                </div>
+                                <div class="goal-card" data-goal="endurance">
+                                    <i class="fas fa-heartbeat"></i>
+                                    <h3>Improve Endurance</h3>
+                                </div>
+                                <div class="goal-card" data-goal="flexibility">
+                                    <i class="fas fa-spa"></i>
+                                    <h3>Increase Flexibility</h3>
+                                </div>
+                                <div class="goal-card" data-goal="recovery">
+                                    <i class="fas fa-heart"></i>
+                                    <h3>Enhance Recovery</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step" data-step="3">
+                            <h2>Your Availability</h2>
+                            <div class="schedule-selector">
+                                <div class="day-selector">
+                                    <div class="day" data-day="mon">Mon</div>
+                                    <div class="day" data-day="tue">Tue</div>
+                                    <div class="day" data-day="wed">Wed</div>
+                                    <div class="day" data-day="thu">Thu</div>
+                                    <div class="day" data-day="fri">Fri</div>
+                                    <div class="day" data-day="sat">Sat</div>
+                                    <div class="day" data-day="sun">Sun</div>
+                                </div>
+                                <div class="time-slider">
+                                    <label for="morning">Morning</label>
+                                    <input type="range" id="morning" min="0" max="100" value="50">
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="range" id="afternoon" min="0" max="100" value="30">
+                                    <label for="evening">Evening</label>
+                                    <input type="range" id="evening" min="0" max="100" value="20">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step" data-step="4">
+                            <h2>Personalization</h2>
+                            <div class="personalization-options">
+                                <div class="toggle-option">
+                                    <span>Enable AI Personalization</span>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-option">
+                                    <span>Connect Wearable Device</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="wearable-options hidden">
+                                    <button class="btn btn-wearable"><i class="fab fa-google"></i> Google Fit</button>
+                                    <button class="btn btn-wearable"><i class="fas fa-heartbeat"></i> Apple Health</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-complete">Get Started</button>
+                        </div>
+                    </div>
+                    
+                    <div class="onboarding-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%;"></div>
+                        </div>
+                        <div class="step-indicators">
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home Dashboard -->
+            <section id="home" class="screen">
+                <div class="dashboard-header">
+                    <h1>Welcome Back, <span class="user-name">User</span>!</h1>
+                    <p id="ai-motivation">"Consistency is key. Let's make today count!"</p>
+                </div>
+                
+                <div class="status-cards">
+                    <div class="status-card recovery">
+                        <i class="fas fa-bed"></i>
+                        <h3>Recovery</h3>
+                        <div class="status-value">85%</div>
+                        <p>Ready to train hard</p>
+                    </div>
+                    <div class="status-card fatigue">
+                        <i class="fas fa-tired"></i>
+                        <h3>Fatigue</h3>
+                        <div class="status-value">15%</div>
+                        <p>Low fatigue</p>
+                    </div>
+                    <div class="status-card streak">
+                        <i class="fas fa-fire"></i>
+                        <h3>Streak</h3>
+                        <div class="status-value">7</div>
+                        <p>days in a row</p>
+                    </div>
+                </div>
+                
+                <div class="ai-suggestion">
+                    <h2>Today's AI Suggestion</h2>
+                    <div class="suggestion-card">
+                        <div class="suggestion-image" style="background-color: #6C63FF;">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="suggestion-details">
+                            <h3>Mobility & Core Focus</h3>
+                            <p>30 min session targeting flexibility and core stability</p>
+                            <div class="difficulty">
+                                <span class="difficulty-label">Moderate</span>
+                                <div class="difficulty-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary btn-lg" id="start-training">
+                        <i class="fas fa-running"></i> Start Training
+                    </button>
+                    <button class="btn btn-secondary btn-lg" id="start-recovery">
+                        <i class="fas fa-spa"></i> Start Recovery
+                    </button>
+                </div>
+            </section>
+
+            <!-- Training Engine -->
+            <section id="training" class="screen">
+                <div class="training-header">
+                    <h1>Personalized Training</h1>
+                    <div class="training-filter">
+                        <select id="training-focus">
+                            <option value="all">All Focus Areas</option>
+                            <option value="cardio">Cardio</option>
+                            <option value="upper">Upper Body</option>
+                            <option value="lower">Lower Body</option>
+                            <option value="mobility">Mobility</option>
+                            <option value="ai">AI Suggested</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="training-categories">
+                    <div class="category-card" data-category="cardio">
+                        <div class="category-icon" style="background-color: #FF6B6B;">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Cardio</h3>
+                    </div>
+                    <div class="category-card" data-category="upper">
+                        <div class="category-icon" style="background-color: #4ECDC4;">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Upper Body</h3>
+                    </div>
+                    <div class="category-card" data-category="lower">
+                        <div class="category-icon" style="background-color: #45B7D1;">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <h3>Lower Body</h3>
+                    </div>
+                    <div class="category-card" data-category="mobility">
+                        <div class="category-icon" style="background-color: #A78BFA;">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Mobility</h3>
+                    </div>
+                    <div class="category-card" data-category="ai">
+                        <div class="category-icon" style="background-color: #6C63FF;">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Suggest</h3>
+                    </div>
+                </div>
+                
+                <div class="workout-list">
+                    <h2>Recommended Workouts</h2>
+                    <div class="workout-card">
+                        <div class="workout-image" style="background-color: #6C63FF;">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="workout-details">
+                            <h3>Dynamic Mobility Flow</h3>
+                            <p>25 min • Full Body</p>
+                            <div class="workout-stats">
+                                <span><i class="fas fa-clock"></i> 25 min</span>
+                                <span><i class="fas fa-bolt"></i> Moderate</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-start">Start</button>
+                    </div>
+                    
+                    <div class="workout-card">
+                        <div class="workout-image" style="background-color: #4ECDC4;">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="workout-details">
+                            <h3>Upper Body Strength</h3>
+                            <p>35 min • Push/Pull</p>
+                            <div class="workout-stats">
+                                <span><i class="fas fa-clock"></i> 35 min</span>
+                                <span><i class="fas fa-bolt"></i> Hard</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-start">Start</button>
+                    </div>
+                </div>
+                
+                <!-- Active Workout Screen (Hidden by default) -->
+                <div class="active-workout hidden">
+                    <div class="workout-header">
+                        <button class="btn btn-back"><i class="fas fa-arrow-left"></i></button>
+                        <h2>Dynamic Mobility Flow</h2>
+                        <div class="workout-timer">00:00</div>
+                    </div>
+                    
+                    <div class="camera-feed">
+                        <div class="camera-placeholder">
+                            <i class="fas fa-camera"></i>
+                            <p>Camera feed would appear here</p>
+                        </div>
+                        <div class="posture-feedback">
+                            <div class="posture-score">
+                                <span>Posture Score</span>
+                                <div class="score-circle">87%</div>
+                            </div>
+                            <div class="feedback-message">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Good form! Keep it up.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise-info">
+                        <h3>Current Exercise: <span id="current-exercise">Cat-Cow Stretch</span></h3>
+                        <div class="exercise-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%;"></div>
+                            </div>
+                            <span>3/10 reps</span>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-controls">
+                        <button class="btn btn-control" id="prev-exercise"><i class="fas fa-step-backward"></i></button>
+                        <button class="btn btn-pause" id="pause-workout"><i class="fas fa-pause"></i> Pause</button>
+                        <button class="btn btn-control" id="next-exercise"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                    
+                    <div class="exercise-details">
+                        <h4>Instructions</h4>
+                        <p>Move between cat pose (arched back) and cow pose (dropped belly) slowly with your breath.</p>
+                        <div class="exercise-tips">
+                            <h4>AI Tips</h4>
+                            <ul>
+                                <li>Inhale as you drop belly for cow pose</li>
+                                <li>Exhale as you round spine for cat pose</li>
+                                <li>Keep movements fluid and controlled</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Real-Time Feedback -->
+            <section id="feedback" class="screen">
+                <div class="feedback-header">
+                    <h1>Real-Time Feedback</h1>
+                    <p>Your AI coach is analyzing your form</p>
+                </div>
+                
+                <div class="feedback-container">
+                    <div class="feedback-visualization">
+                        <div class="skeleton-visualization">
+                            <!-- SVG or Canvas would go here -->
+                            <img src="https://via.placeholder.com/300x400?text=Skeleton+Visualization" alt="Posture visualization">
+                        </div>
+                        <div class="joint-angles">
+                            <div class="angle-marker" data-joint="shoulder">
+                                <span>Shoulder: 25°</span>
+                            </div>
+                            <div class="angle-marker" data-joint="spine">
+                                <span>Spine: 12°</span>
+                            </div>
+                            <div class="angle-marker" data-joint="hip">
+                                <span>Hip: 18°</span>
+                            </div>
+                            <div class="angle-marker" data-joint="knee">
+                                <span>Knee: 45°</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feedback-messages">
+                        <div class="feedback-alert positive">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>Good Form!</h3>
+                                <p>Your back alignment is perfect for this exercise.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-alert warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <h3>Watch Your Knees</h3>
+                                <p>Try not to let your knees cave inward during the squat.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-alert negative">
+                            <i class="fas fa-times-circle"></i>
+                            <div>
+                                <h3>Adjust Your Posture</h3>
+                                <p>Straighten your back to avoid strain on your lower spine.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fatigue-meter">
+                        <h3>Fatigue Level</h3>
+                        <div class="meter-container">
+                            <div class="meter-fill" style="width: 65%;"></div>
+                            <div class="meter-labels">
+                                <span>Fresh</span>
+                                <span>Moderate</span>
+                                <span>Fatigued</span>
+                            </div>
+                        </div>
+                        <div class="rest-suggestion">
+                            <i class="fas fa-clock"></i>
+                            <span>Suggested rest: 90 seconds between sets</span>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-rating">
+                        <h3>Set Performance</h3>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span>3.5/5</span>
+                        </div>
+                        <p>Good effort! Focus on maintaining form as you fatigue.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Smart Recovery Assistant -->
+            <section id="recovery" class="screen">
+                <div class="recovery-header">
+                    <h1>Smart Recovery</h1>
+                    <p>Optimize your recovery with AI guidance</p>
+                </div>
+                
+                <div class="recovery-options">
+                    <div class="recovery-card cooldown">
+                        <div class="card-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <h3>Cooldown Walk</h3>
+                        <p>5-10 minute gentle walk</p>
+                        <button class="btn btn-start">Start</button>
+                    </div>
+                    
+                    <div class="recovery-card breathing">
+                        <div class="card-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3>Breathing Session</h3>
+                        <p>Box breathing technique</p>
+                        <button class="btn btn-start">Start</button>
+                    </div>
+                    
+                    <div class="recovery-card stretching">
+                        <div class="card-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Stretching Routine</h3>
+                        <p>Targeted muscle release</p>
+                        <button class="btn btn-start">Start</button>
+                    </div>
+                </div>
+                
+                <!-- Breathing Session (Hidden by default) -->
+                <div class="breathing-session hidden">
+                    <div class="breathing-header">
+                        <button class="btn btn-back"><i class="fas fa-arrow-left"></i></button>
+                        <h2>Box Breathing</h2>
+                        <div class="breathing-timer">00:00</div>
+                    </div>
+                    
+                    <div class="breathing-visual">
+                        <div class="breathing-circle inhale">
+                            <span>INHALE</span>
+                            <div class="circle-animation"></div>
+                            <div class="breathing-count">4</div>
+                        </div>
+                        <div class="breathing-instructions">
+                            <p>Follow the animation: Inhale (4s) → Hold (4s) → Exhale (4s) → Hold (4s)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="breathing-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-heartbeat"></i>
+                            <span class="stat-value">72</span>
+                            <span class="stat-label">BPM</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-lungs"></i>
+                            <span class="stat-value">14</span>
+                            <span class="stat-label">Breaths/min</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="stat-value">-12%</span>
+                            <span class="stat-label">Stress</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg" id="complete-breathing">Complete Session</button>
+                </div>
+                
+                <!-- Mood Check-in -->
+                <div class="mood-checkin">
+                    <h2>How Are You Feeling?</h2>
+                    <div class="emoji-slider">
+                        <div class="emoji-options">
+                            <span>😫</span>
+                            <span>😞</span>
+                            <span>😐</span>
+                            <span>🙂</span>
+                            <span>😁</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" class="slider" id="mood-slider">
+                    </div>
+                    <div class="recovery-tips">
+                        <h3>Recovery Tips Based on Your Mood</h3>
+                        <div class="tips-container">
+                            <div class="tip-card">
+                                <i class="fas fa-moon"></i>
+                                <p>Consider an extra 30 minutes of sleep tonight</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-glass-whiskey"></i>
+                                <p>Hydrate with electrolyte-rich fluids</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-utensils"></i>
+                                <p>Include protein in your next meal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Dashboard -->
+            <section id="analytics" class="screen">
+                <div class="analytics-header">
+                    <h1>Your Analytics</h1>
+                    <div class="time-filter">
+                        <select id="time-period">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">Last 3 Months</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="activity-calendar">
+                    <h2>Activity Calendar</h2>
+                    <div class="calendar-grid">
+                        <!-- Calendar would be generated by JavaScript -->
+                        <div class="calendar-placeholder">
+                            <p>Activity calendar visualization would appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-cards">
+                    <div class="analytics-card">
+                        <h3>Form Score</h3>
+                        <div class="analytics-chart">
+                            <canvas id="form-chart" width="300" height="200"></canvas>
+                        </div>
+                        <p class="trend up">+5% from last week</p>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Muscle Focus</h3>
+                        <div class="analytics-chart">
+                            <canvas id="muscle-chart" width="300" height="200"></canvas>
+                        </div>
+                        <p>Balanced upper/lower split</p>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Energy Trends</h3>
+                        <div class="analytics-chart">
+                            <canvas id="energy-chart" width="300" height="200"></canvas>
+                        </div>
+                        <p class="trend down">Morning energy highest</p>
+                    </div>
+                </div>
+                
+                <div class="progress-tracker">
+                    <h2>Your Progress</h2>
+                    <div class="xp-tracker">
+                        <div class="xp-progress">
+                            <div class="xp-fill" style="width: 65%;"></div>
+                        </div>
+                        <div class="xp-details">
+                            <span>Level 4</span>
+                            <span>650/1000 XP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievements">
+                        <h3>Recent Achievements</h3>
+                        <div class="badges">
+                            <div class="badge">
+                                <i class="fas fa-fire"></i>
+                                <span>7 Day Streak</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-perfect"></i>
+                                <span>Form Master</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-heart"></i>
+                                <span>Recovery Pro</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-insights">
+                        <h3>AI Insights</h3>
+                        <div class="insight-card">
+                            <i class="fas fa-robot"></i>
+                            <p>You haven't trained mobility in 5 days. Consider adding a session this week.</p>
+                        </div>
+                        <div class="insight-card">
+                            <i class="fas fa-robot"></i>
+                            <p>Your form scores are 12% higher in morning sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gamification System -->
+            <section id="gamification" class="screen">
+                <div class="gamification-header">
+                    <h1>Gamification</h1>
+                    <p>Earn rewards for your progress</p>
+                </div>
+                
+                <div class="xp-system">
+                    <div class="level-display">
+                        <div class="level-circle">
+                            <span>4</span>
+                        </div>
+                        <div class="level-info">
+                            <h2>Level 4 Explorer</h2>
+                            <p>650/1000 XP to next level</p>
+                        </div>
+                    </div>
+                    
+                    <div class="xp-breakdown">
+                        <h3>Recent XP Gains</h3>
+                        <div class="xp-item">
+                            <i class="fas fa-running"></i>
+                            <div>
+                                <p>Completed Mobility Workout</p>
+                                <span>+50 XP</span>
+                            </div>
+                        </div>
+                        <div class="xp-item">
+                            <i class="fas fa-fire"></i>
+                            <div>
+                                <p>7 Day Streak Bonus</p>
+                                <span>+100 XP</span>
+                            </div>
+                        </div>
+                        <div class="xp-item">
+                            <i class="fas fa-perfect"></i>
+                            <div>
+                                <p>Perfect Form Achievement</p>
+                                <span>+75 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="streaks">
+                    <h2>Current Streaks</h2>
+                    <div class="streak-cards">
+                        <div class="streak-card">
+                            <i class="fas fa-fire"></i>
+                            <h3>7 Days</h3>
+                            <p>Training Streak</p>
+                        </div>
+                        <div class="streak-card">
+                            <i class="fas fa-moon"></i>
+                            <h3>5 Days</h3>
+                            <p>Sleep Streak</p>
+                        </div>
+                        <div class="streak-card">
+                            <i class="fas fa-glass-whiskey"></i>
+                            <h3>3 Days</h3>
+                            <p>Hydration Streak</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="achievements-section">
+                    <h2>Your Achievements</h2>
+                    <div class="achievement-categories">
+                        <button class="btn-category active">All</button>
+                        <button class="btn-category">Training</button>
+                        <button class="btn-category">Recovery</button>
+                        <button class="btn-category">Consistency</button>
+                    </div>
+                    
+                    <div class="achievement-grid">
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3>7 Day Streak</h3>
+                                <p>Train for 7 consecutive days</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">
+                                <i class="fas fa-perfect"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3>Form Master</h3>
+                                <p>Maintain 90%+ form for 3 sessions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement locked">
+                            <div class="achievement-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3>Strength Builder</h3>
+                                <p>Complete 10 strength sessions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="challenges">
+                    <h2>Current Challenges</h2>
+                    <div class="challenge-cards">
+                        <div class="challenge-card">
+                            <div class="challenge-header">
+                                <h3>Mobility Master</h3>
+                                <span class="reward">+150 XP</span>
+                            </div>
+                            <p>Complete 3 mobility sessions this week</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 33%;"></div>
+                            </div>
+                            <span>1/3 completed</span>
+                        </div>
+                        
+                        <div class="challenge-card">
+                            <div class="challenge-header">
+                                <h3>Friend Challenge</h3>
+                                <span class="reward">+200 XP</span>
+                            </div>
+                            <p>Complete more sessions than Alex this week</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%;"></div>
+                            </div>
+                            <span>You're ahead by 3</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social & Community -->
+            <section id="community" class="screen">
+                <div class="community-header">
+                    <h1>Community</h1>
+                    <div class="community-tabs">
+                        <button class="tab-btn active" data-tab="friends">Friends</button>
+                        <button class="tab-btn" data-tab="groups">Groups</button>
+                        <button class="tab-btn" data-tab="leaderboard">Leaderboard</button>
+                    </div>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="profile-card">
+                        <img src="https://via.placeholder.com/80" alt="Profile" class="profile-pic">
+                        <div class="profile-info">
+                            <h2>Your Profile</h2>
+                            <p>Level 4 Explorer</p>
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="value">7</span>
+                                    <span class="label">Streak</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">12</span>
+                                    <span class="label">Workouts</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">4</span>
+                                    <span class="label">Achievements</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-edit">Edit</button>
+                    </div>
+                </div>
+                
+                <div class="friends-tab tab-content active">
+                    <div class="friends-search">
+                        <input type="text" placeholder="Search friends...">
+                        <button class="btn btn-add"><i class="fas fa-user-plus"></i> Add</button>
+                    </div>
+                    
+                    <div class="friends-list">
+                        <div class="friend-card">
+                            <img src="https://via.placeholder.com/50" alt="Friend" class="friend-pic">
+                            <div class="friend-info">
+                                <h3>Alex Johnson</h3>
+                                <p>Currently: Mobility Workout</p>
+                            </div>
+                            <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i> High Five</button>
+                        </div>
+                        
+                        <div class="friend-card">
+                            <img src="https://via.placeholder.com/50" alt="Friend" class="friend-pic">
+                            <div class="friend-info">
+                                <h3>Sam Taylor</h3>
+                                <p>7 day streak!</p>
+                            </div>
+                            <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i> High Five</button>
+                        </div>
+                    </div>
+                    
+                    <div class="friend-activity">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-item">
+                            <img src="https://via.placeholder.com/40" alt="User" class="activity-pic">
+                            <div class="activity-details">
+                                <p><strong>Alex</strong> completed Upper Body Strength</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                            <button class="btn btn-comment"><i class="far fa-comment"></i></button>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <img src="https://via.placeholder.com/40" alt="User" class="activity-pic">
+                            <div class="activity-details">
+                                <p><strong>Sam</strong> earned Form Master badge</p>
+                                <span class="activity-time">5 hours ago</span>
+                            </div>
+                            <button class="btn btn-comment"><i class="far fa-comment"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="groups-tab tab-content">
+                    <div class="group-cards">
+                        <div class="group-card">
+                            <div class="group-header">
+                                <h3>Mobility Masters</h3>
+                                <span class="members">24 members</span>
+                            </div>
+                            <p>Focus on flexibility and joint health</p>
+                            <div class="group-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <span>Group Challenge: 65% complete</span>
+                            </div>
+                            <button class="btn btn-join">Join</button>
+                        </div>
+                        
+                        <div class="group-card">
+                            <div class="group-header">
+                                <h3>Morning Warriors</h3>
+                                <span class="members">42 members</span>
+                            </div>
+                            <p>Early risers getting it done</p>
+                            <div class="group-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%;"></div>
+                                </div>
+                                <span>Group Challenge: 30% complete</span>
+                            </div>
+                            <button class="btn btn-joined">Joined</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="leaderboard-tab tab-content">
+                    <div class="leaderboard-header">
+                        <h3>Weekly Leaderboard</h3>
+                        <select id="leaderboard-filter">
+                            <option value="xp">XP Earned</option>
+                            <option value="streak">Longest Streak</option>
+                            <option value="sessions">Most Sessions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item you">
+                            <span class="rank">4</span>
+                            <img src="https://via.placeholder.com/40" alt="User" class="user-pic">
+                            <div class="user-info">
+                                <h4>You</h4>
+                                <p>650 XP</p>
+                            </div>
+                            <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i></button>
+                        </div>
+                        
+                        <div class="leaderboard-item">
+                            <span class="rank">1</span>
+                            <img src="https://via.placeholder.com/40" alt="User" class="user-pic">
+                            <div class="user-info">
+                                <h4>Alex Johnson</h4>
+                                <p>1200 XP</p>
+                            </div>
+                            <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i></button>
+                        </div>
+                        
+                        <div class="leaderboard-item">
+                            <span class="rank">2</span>
+                            <img src="https://via.placeholder.com/40" alt="User" class="user-pic">
+                            <div class="user-info">
+                                <h4>Sam Taylor</h4>
+                                <p>980 XP</p>
+                            </div>
+                            <button class="btn btn-highfive"><i class="fas fa-hand-paper"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Chat Assistant -->
+            <section id="ai-coach" class="screen">
+                <div class="chat-header">
+                    <div class="coach-info">
+                        <img src="https://via.placeholder.com/50" alt="AI Coach" class="coach-avatar">
+                        <div>
+                            <h1>BeBTR Coach</h1>
+                            <p class="status">Online</p>
+                        </div>
+                    </div>
+                    <div class="chat-settings">
+                        <button class="btn btn-voice" id="toggle-voice">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message coach">
+                            <img src="https://via.placeholder.com/40" alt="AI Coach" class="message-avatar">
+                            <div class="message-content">
+                                <p>Hi there! I'm your BeBTR AI Coach. How can I help you today?</p>
+                                <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="message user">
+                            <div class="message-content">
+                                <p>I'm feeling sore from yesterday's workout. What should I do?</p>
+                                <span class="message-time">10:02 AM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="message coach">
+                            <img src="https://via.placeholder.com/40" alt="AI Coach" class="message-avatar">
+                            <div class="message-content">
+                                <p>Based on your recent activity, I recommend:</p>
+                                <ul>
+                                    <li>Light mobility work (try the Recovery Flow routine)</li>
+                                    <li>Hydration with electrolytes</li>
+                                    <li>Foam rolling focused on your quads and shoulders</li>
+                                </ul>
+                                <p>Would you like me to schedule a recovery session?</p>
+                                <span class="message-time">10:03 AM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-replies">
+                            <button class="btn btn-reply">Schedule recovery</button>
+                            <button class="btn btn-reply">Show me exercises</button>
+                            <button class="btn btn-reply">Something else</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input">
+                        <input type="text" placeholder="Ask your AI coach...">
+                        <button class="btn btn-send"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                
+                <div class="chat-summary hidden">
+                    <h3>Session Summary</h3>
+                    <div class="summary-card">
+                        <h4>Last Workout: Upper Body Strength</h4>
+                        <div class="summary-stats">
+                            <div class="stat">
+                                <span class="value">87%</span>
+                                <span class="label">Form</span>
+                            </div>
+                            <div class="stat">
+                                <span class="value">32 min</span>
+                                <span class="label">Duration</span>
+                            </div>
+                            <div class="stat">
+                                <span class="value">+50 XP</span>
+                                <span class="label">Earned</span>
+                            </div>
+                        </div>
+                        <div class="summary-feedback">
+                            <p>Your shoulder press form improved by 12% from last session!</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-back-chat"><i class="fas fa-arrow-left"></i> Back to chat</button>
+                </div>
+            </section>
+
+            <!-- Live Support -->
+            <section id="support" class="screen">
+                <div class="support-header">
+                    <h1>Live Support</h1>
+                    <p>Connect with our specialists</p>
+                </div>
+                
+                <div class="support-options">
+                    <div class="support-card">
+                        <div class="card-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Training Coach</h3>
+                        <p>Get personalized workout advice</p>
+                        <div class="availability">
+                            <i class="fas fa-circle online"></i>
+                            <span>2 coaches available</span>
+                        </div>
+                        <button class="btn btn-connect">Connect</button>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Physiotherapist</h3>
+                        <p>Injury prevention & recovery</p>
+                        <div class="availability">
+                            <i class="fas fa-circle online"></i>
+                            <span>1 specialist available</span>
+                        </div>
+                        <button class="btn btn-connect">Connect</button>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Mental Coach</h3>
+                        <p>Mindset & motivation</p>
+                        <div class="availability">
+                            <i class="fas fa-circle offline"></i>
+                            <span>Available tomorrow</span>
+                        </div>
+                        <button class="btn btn-schedule">Schedule</button>
+                    </div>
+                </div>
+                
+                <div class="support-subscription">
+                    <h3>Subscription Plans</h3>
+                    <div class="plan-cards">
+                        <div class="plan-card">
+                            <h4>Basic</h4>
+                            <div class="plan-price">$0<span>/month</span></div>
+                            <ul>
+                                <li>Everything in Basic</li>
+                                <li>Basic Analytics</li>
+                                <li>Community Features</li>
+                                <li class="not-included">Live Specialist Access</li>
+                            </ul>
+                            <button class="btn btn-current">Current Plan</button>
+                        </div>
+                        
+                        <div class="plan-card recommended">
+                            <div class="recommended-badge">Recommended</div>
+                            <h4>Pro</h4>
+                            <div class="plan-price">$9.99<span>/month</span></div>
+                            <ul>
+                                <li>AI Coach Access</li>
+                                <li>2 Live Sessions/month</li>
+                                <li>Advanced Analytics</li>
+                                <li>Priority Support</li>
+                            </ul>
+                            <button class="btn btn-upgrade">Upgrade</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="credits-system">
+                    <h3>Credit System</h3>
+                    <div class="credits-balance">
+                        <span>Your Credits:</span>
+                        <span class="credits-value">0</span>
+                    </div>
+                    <p>Use credits to book individual sessions without a subscription</p>
+                    <button class="btn btn-buy">Buy Credits</button>
+                </div>
+                
+                <div class="ai-escalation">
+                    <h3>AI Escalation to Human</h3>
+                    <div class="escalation-flow">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <p>Chat with AI Coach</p>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <p>AI assesses need</p>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <p>Connects to specialist</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-try">Try It Now</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+    <!-- Floating Chat Widget -->
+<div class="chat-widget">
+    <div class="chat-icon">
+        <i class="fas fa-comment-dots"></i>
+        <span class="notification-badge hidden">1</span>
+    </div>
+    <div class="chat-container hidden">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <h3>BeBTR Coach</h3>
+                <span class="status online">Online</span>
+            </div>
+            <button class="btn-close-chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">
+                <div class="avatar">
+                    <img src="https://via.placeholder.com/40" alt="AI Coach">
+                </div>
+                <div class="content">
+                    <p>Hi there! I'm your BeBTR AI Coach. How can I help you today?</p>
+                    <span class="timestamp">10:00 AM</span>
+                </div>
+            </div>
+            <!-- More messages will be added here dynamically -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message..." id="chat-message-input">
+            <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
