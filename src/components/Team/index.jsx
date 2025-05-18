@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 
 // Import images from src/assets
 import teamMember1 from '../../assets/images/team-member1.png';
@@ -136,28 +136,28 @@ function Team() {
     {
       name: "Siméon Wansi",
       role: "AI/ML Engineer & Tech Lead",
-      bio: "Machine Learning Engineer specializing in AI applications for health tech. Currently developing QUWA's intelligent recommendation systems using Python and TensorFlow. Background in data science and cloud computing.",
+      bio: "ML specialist developing QUWA's smart recommendation systems.",
       image: teamMember2,
       linkedin: "https://www.linkedin.com/in/siméon-wansi/",
     },
     {
       name: "Awaiz Ahmed",
       role: "Frontend Developer & Mobile Specialist",
-      bio: "Full-stack developer with expertise in React Native and UI/UX design. Combines technical skills with athletic experience to build intuitive fitness interfaces for QUWA. Passionate about creating tech solutions for women's health.",
+      bio: "React Native expert building QUWA's mobile interface with athletic insight.",
       image: teamMember1,
       linkedin: "https://www.linkedin.com/in/awaiz-ahmed/",
     },
     {
       name: "Coleen Madeer",
       role: "Nutrition Research Lead",
-      bio: "Registered Dietitian and Public Health graduate student. Brings evidence-based nutrition science to QUWA's development, with research focus on women's health and community nutrition programs.",
+      bio: "Dietitian ensuring QUWA's science-backed health approach.",
       image: teamMember3,
       linkedin: "https://www.linkedin.com/in/colleen-mader/",
     },
     {
       name: "Alaa Wael",
       role: "Regional Fitness Consultant",
-      bio: "Certified fitness professional and researcher with expertise in women's health in Middle Eastern contexts. Contributing cultural insights and localized exercise regimens to QUWA's development.",
+      bio: "Certified trainer adapting QUWA for regional needs.",
       image: teamMember4,
       linkedin: "https://www.linkedin.com/in/alaa-wael-ibrahim-qarajeh-b11683335/",
     }
@@ -186,14 +186,8 @@ function Team() {
                   }}
                 />
                 <SocialLinks className="social-links">
-                  <SocialLink href={member.twitter} target="_blank" rel="noopener noreferrer">
-                    <FaTwitter />
-                  </SocialLink>
                   <SocialLink href={member.linkedin} target="_blank" rel="noopener noreferrer">
                     <FaLinkedin />
-                  </SocialLink>
-                  <SocialLink href={member.instagram} target="_blank" rel="noopener noreferrer">
-                    <FaInstagram />
                   </SocialLink>
                 </SocialLinks>
               </TeamImage>
