@@ -77,7 +77,7 @@ const FeatureDescription = styled.p`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-const DemoImage = styled(motion.img)`
+const DemoVideo = styled(motion.video)`
   width: 100%;
   max-width: 500px;
   display: block;
@@ -91,32 +91,35 @@ function FormCorrection() {
     {
       icon: <FaCamera />,
       title: "Real-Time Analysis",
-      description: "Simply perform your exercises in front of your smartphone camera for instant feedback."
+      description:
+        "Simply perform your exercises in front of your smartphone camera for instant feedback.",
     },
     {
       icon: <FaExclamationTriangle />,
       title: "Form Correction",
-      description: "Get alerts when your form needs adjustment to prevent injury and maximize effectiveness."
+      description:
+        "Get alerts when your form needs adjustment to prevent injury and maximize effectiveness.",
     },
     {
       icon: <FaCheckCircle />,
       title: "Confirmation",
-      description: "Receive positive feedback when you're performing exercises correctly."
-    }
+      description:
+        "Receive positive feedback when you're performing exercises correctly.",
+    },
   ];
 
   return (
     <FormContainer>
       <Container>
         <SectionTitle>AI-Powered Form Correction</SectionTitle>
-        
+
         <Content>
           <TextContent>
             <p>
-              Quwa uses artificial intelligence to help ensure your form is correct, 
+              Quwa uses artificial intelligence to help ensure your form is correct,
               helping you target the right muscle groups and reducing injury risk.
             </p>
-            
+
             <FeatureList>
               {features.map((feature, index) => (
                 <FeatureItem key={index}>
@@ -129,11 +132,15 @@ function FormCorrection() {
               ))}
             </FeatureList>
           </TextContent>
-          
+
           <ImageContent>
-            <DemoImage
-              src="/images/form-correction-demo.png"
-              alt="Form Correction Demo"
+            <DemoVideo
+              src="/Videos/form.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               whileHover={{ scale: 1.02 }}
             />
           </ImageContent>

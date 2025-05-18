@@ -1,16 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { 
-  FaTwitter, 
-  FaLinkedin, 
-  FaInstagram 
-} from 'react-icons/fa';
+import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+
+const defaultColors = {
+  light: '#f9f9f9',
+  dark: '#222',
+  text: '#555',
+  background: '#fff',
+  primary: '#6c63ff',
+  secondary: '#3f3d56',
+  shadows: {
+    small: '0 2px 8px rgba(0,0,0,0.1)'
+  }
+};
 
 const TeamContainer = styled.section`
   padding: 5rem 0;
   scroll-margin-top: 80px;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => (theme?.colors?.light || defaultColors.light)};
   text-align: center;
 `;
 
@@ -23,12 +31,12 @@ const Container = styled.div`
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => (theme?.colors?.dark || defaultColors.dark)};
 `;
 
 const Subtitle = styled.p`
   font-size: 1.25rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => (theme?.colors?.text || defaultColors.text)};
   margin-bottom: 3rem;
   max-width: 800px;
   margin-left: auto;
@@ -43,10 +51,10 @@ const TeamGrid = styled.div`
 `;
 
 const TeamCard = styled(motion.div)`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => (theme?.colors?.background || defaultColors.background)};
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: ${({ theme }) => theme.shadows.small};
+  box-shadow: ${({ theme }) => (theme?.shadows?.small || defaultColors.shadows.small)};
   transition: all 0.3s ease;
 `;
 
@@ -57,7 +65,12 @@ const TeamImage = styled.div`
   overflow: hidden;
   margin: 0 auto 1.5rem;
   position: relative;
-  border: 5px solid ${({ theme }) => theme.colors.light};
+  border: 5px solid ${({ theme }) => (theme?.colors?.light || defaultColors.light)};
+
+  &:hover .social-links {
+    opacity: 1;
+    bottom: -10px;
+  }
 `;
 
 const Image = styled.img`
@@ -66,7 +79,7 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const SocialLinks = styled(motion.div)`
+const SocialLinks = styled.div`
   position: absolute;
   bottom: -20px;
   left: 50%;
@@ -74,13 +87,14 @@ const SocialLinks = styled(motion.div)`
   display: flex;
   opacity: 0;
   transition: all 0.3s ease;
+  z-index: 1;
 `;
 
 const SocialLink = styled.a`
   width: 40px;
   height: 40px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => (theme?.colors?.primary || defaultColors.primary)};
+  color: ${({ theme }) => (theme?.colors?.background || defaultColors.background)};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -89,7 +103,7 @@ const SocialLink = styled.a`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme }) => (theme?.colors?.secondary || defaultColors.secondary)};
     transform: translateY(-5px);
   }
 `;
@@ -97,17 +111,17 @@ const SocialLink = styled.a`
 const TeamName = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => (theme?.colors?.dark || defaultColors.dark)};
 `;
 
 const TeamRole = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => (theme?.colors?.primary || defaultColors.primary)};
   font-weight: 600;
   margin-bottom: 1rem;
 `;
 
 const TeamBio = styled.p`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => (theme?.colors?.text || defaultColors.text)};
 `;
 
 function Team() {
@@ -116,25 +130,37 @@ function Team() {
       name: "Awaiz Ahmed",
       role: "Mobile Developer",
       bio: "Former professional athlete turned tech entrepreneur with a passion for women's health.",
-      image: "/images/team-member1.jpg"
+      image: "/images/team-member1.png",
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#"
     },
     {
       name: "Simeone Wansi",
       role: "Lead Developer",
       bio: "Tech wizard with expertise in AI and machine learning applications for health.",
-      image: "/images/team-member2.jpg"
+      image: "/images/team-member2.png",
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#"
     },
     {
       name: "Coleen Madeer",
       role: "Head of Nutrition",
       bio: "Registered dietitian with 10+ years experience in women's health and sports nutrition.",
-      image: "/images/team-member3.jpg"
+      image: "/images/team-member3.png",
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#"
     },
     {
       name: "Alaa Al-Mansoori",
       role: "Regional Director",
       bio: "Fitness expert with deep knowledge of women's health challenges in the Middle East.",
-      image: "/images/team-member4.jpg"
+      image: "/images/team-member4.png",
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#"
     }
   ];
 
@@ -143,22 +169,33 @@ function Team() {
       <Container>
         <SectionTitle>Meet Our Team</SectionTitle>
         <Subtitle>The passionate people behind Quwa by Limitless</Subtitle>
-        
+
         <TeamGrid>
           {teamMembers.map((member, index) => (
-            <TeamCard 
+            <TeamCard
               key={index}
               whileHover={{ y: -10, boxShadow: "0 15px 30px rgba(108, 99, 255, 0.1)" }}
             >
               <TeamImage>
-                <Image src={member.image} alt={member.name} />
-                <SocialLinks
-                  initial={{ opacity: 0, bottom: -20 }}
-                  whileHover={{ opacity: 1, bottom: -10 }}
-                >
-                  <SocialLink href="#"><FaTwitter /></SocialLink>
-                  <SocialLink href="#"><FaLinkedin /></SocialLink>
-                  <SocialLink href="#"><FaInstagram /></SocialLink>
+                <Image 
+                  src={member.image} 
+                  alt={member.name}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://via.placeholder.com/150';
+                    console.error(`Failed to load image: ${member.image}`);
+                  }}
+                />
+                <SocialLinks className="social-links">
+                  <SocialLink href={member.twitter} target="_blank" rel="noopener noreferrer">
+                    <FaTwitter />
+                  </SocialLink>
+                  <SocialLink href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin />
+                  </SocialLink>
+                  <SocialLink href={member.instagram} target="_blank" rel="noopener noreferrer">
+                    <FaInstagram />
+                  </SocialLink>
                 </SocialLinks>
               </TeamImage>
               <TeamName>{member.name}</TeamName>
