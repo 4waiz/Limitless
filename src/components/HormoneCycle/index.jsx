@@ -92,7 +92,7 @@ const ImageContent = styled.div`
 `;
 
 const CycleImage = styled.img`
-  width: 100%;
+  width: 400%;
   max-width: 400px;
   display: block;
   margin: 0 auto;

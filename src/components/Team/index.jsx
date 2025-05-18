@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
+// Import images from src/assets
+import teamMember1 from '../../assets/images/team-member1.png';
+import teamMember2 from '../../assets/images/team-member2.png';
+import teamMember3 from '../../assets/images/team-member3.png';
+import teamMember4 from '../../assets/images/team-member4.png';
+
 const defaultColors = {
   light: '#f9f9f9',
   dark: '#222',
@@ -77,6 +83,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  loading="lazy";
 `;
 
 const SocialLinks = styled.div`
@@ -127,40 +134,32 @@ const TeamBio = styled.p`
 function Team() {
   const teamMembers = [
     {
-      name: "Awaiz Ahmed",
-      role: "Mobile Developer",
-      bio: "Former professional athlete turned tech entrepreneur with a passion for women's health.",
-      image: "/images/team-member1.png",
-      twitter: "#",
-      linkedin: "#",
-      instagram: "#"
+      name: "Siméon Wansi",
+      role: "AI/ML Engineer & Tech Lead",
+      bio: "Machine Learning Engineer specializing in AI applications for health tech. Currently developing QUWA's intelligent recommendation systems using Python and TensorFlow. Background in data science and cloud computing.",
+      image: teamMember2,
+      linkedin: "https://www.linkedin.com/in/siméon-wansi/",
     },
     {
-      name: "Simeone Wansi",
-      role: "Lead Developer",
-      bio: "Tech wizard with expertise in AI and machine learning applications for health.",
-      image: "/images/team-member2.png",
-      twitter: "#",
-      linkedin: "#",
-      instagram: "#"
+      name: "Awaiz Ahmed",
+      role: "Frontend Developer & Mobile Specialist",
+      bio: "Full-stack developer with expertise in React Native and UI/UX design. Combines technical skills with athletic experience to build intuitive fitness interfaces for QUWA. Passionate about creating tech solutions for women's health.",
+      image: teamMember1,
+      linkedin: "https://www.linkedin.com/in/awaiz-ahmed/",
     },
     {
       name: "Coleen Madeer",
-      role: "Head of Nutrition",
-      bio: "Registered dietitian with 10+ years experience in women's health and sports nutrition.",
-      image: "/images/team-member3.png",
-      twitter: "#",
-      linkedin: "#",
-      instagram: "#"
+      role: "Nutrition Research Lead",
+      bio: "Registered Dietitian and Public Health graduate student. Brings evidence-based nutrition science to QUWA's development, with research focus on women's health and community nutrition programs.",
+      image: teamMember3,
+      linkedin: "https://www.linkedin.com/in/colleen-mader/",
     },
     {
-      name: "Alaa Al-Mansoori",
-      role: "Regional Director",
-      bio: "Fitness expert with deep knowledge of women's health challenges in the Middle East.",
-      image: "/images/team-member4.png",
-      twitter: "#",
-      linkedin: "#",
-      instagram: "#"
+      name: "Alaa Wael",
+      role: "Regional Fitness Consultant",
+      bio: "Certified fitness professional and researcher with expertise in women's health in Middle Eastern contexts. Contributing cultural insights and localized exercise regimens to QUWA's development.",
+      image: teamMember4,
+      linkedin: "https://www.linkedin.com/in/alaa-wael-ibrahim-qarajeh-b11683335/",
     }
   ];
 

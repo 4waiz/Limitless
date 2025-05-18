@@ -135,14 +135,17 @@ function FormCorrection() {
 
           <ImageContent>
             <DemoVideo
-              src="/Videos/form.mp4"
+              src={`${process.env.PUBLIC_URL}/Videos/form.mp4`}
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
               whileHover={{ scale: 1.02 }}
-            />
+            >
+              <source src={`${process.env.PUBLIC_URL}/Videos/form.mp4`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </DemoVideo>
           </ImageContent>
         </Content>
       </Container>
