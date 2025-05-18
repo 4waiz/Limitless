@@ -1,2 +1,4 @@
 # Limitless
-Smart Health Hackathon - DoH
+Winner of the Smart Health Hackathon - Department of Health, United Arab Emirates 
+
+Category - Gym of tomorrow 
