@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Quwa Fitness",
+  "name": "Quwa by Limitless - Women's Fitness App",
+  "description": "AI-powered fitness app designed for women's hormonal cycles",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +9,46 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "hero-image.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "hero-image.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "hero-image.png",
+      "type": "image/png",
+      "sizes": "144x144"
     }
   ],
-  "start_url": ".",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#6C63FF",
+  "background_color": "#F8F9FA",
+  "orientation": "portrait-primary",
+  "categories": ["health", "fitness", "women"],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "type": "image/png",
+      "sizes": "1080x1920"
+    }
+  ],
+  "features": [
+    "Cross-platform",
+    "fast",
+    "simple"
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.example.app"
+    }
+  ]
 }
